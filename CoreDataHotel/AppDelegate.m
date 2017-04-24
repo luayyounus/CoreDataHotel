@@ -50,7 +50,6 @@
     if(count == 0){
         
         NSDictionary *hotels = [[NSDictionary alloc]init];
-        NSDictionary *rooms = [[NSDictionary alloc]init];
         
         NSString *path = [[NSBundle mainBundle]pathForResource:@"hotels" ofType:@"json"];
         
@@ -83,7 +82,14 @@
                 newRoom.hotel = newHotel;
             }
         }
+        NSError *saveError;
+        [self.persistentContainer.viewContext save:&saveError];
         
+        if(saveError){
+            NSLog(@"There was an error saving to core data");
+        } else {
+            NSLog(@"Successfully saved to Core Data");
+        }
     }
 }
 
