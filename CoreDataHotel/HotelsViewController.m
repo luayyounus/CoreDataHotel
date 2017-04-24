@@ -11,7 +11,7 @@
 #import "Hotel+CoreDataClass.h"
 #import "Hotel+CoreDataProperties.h"
 
-@interface HotelsViewController ()
+@interface HotelsViewController ()<UITableViewDataSource>
 
 @property(strong,nonatomic) NSArray *allHotels;
 @property(strong,nonatomic) UITableView *tableView;
@@ -20,10 +20,18 @@
 
 @implementation HotelsViewController
 
+
+-(void)loadView{
+    [super loadView];
+    
+    //add TableView As SubView and Apply Constraints
+
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-
+    self.tableView.dataSource = self;
+    [self.tableView registerClass:[UITableView class] forCellReuseIdentifier:@"cell"];
 }
 
 //getter, if we dont have the data for all Hotels, go bring it!
