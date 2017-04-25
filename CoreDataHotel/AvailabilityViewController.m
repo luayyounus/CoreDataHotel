@@ -11,6 +11,8 @@
 #import "AppDelegate.h"
 #import "Reservation+CoreDataClass.h"
 #import "Reservation+CoreDataProperties.h"
+#import "Room+CoreDataClass.h"
+#import "Room+CoreDataProperties.h"
 
 @interface AvailabilityViewController ()<UITableViewDataSource>
 
@@ -27,7 +29,7 @@
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Reservation"];
         
-        request.predicate = [NSPredicate predicateWithFormat:@"startDate <=%@ AND endDate >= %@", self.endDate, self.startDate];
+        request.predicate = [NSPredicate predicateWithFormat:@"startDate <=%@ AND endDate >= %@", self.endDate, [NSDate date]];
         
         NSError *roomError;
         NSArray *results = [appDelegate.persistentContainer.viewContext executeFetchRequest:request error:&roomError];
@@ -84,6 +86,9 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *roomCell = [tableView dequeueReusableCellWithIdentifier:@"roomCell" forIndexPath:indexPath];
     
+    Room *currentRoom = self.availableRooms[indexPath.row];
+    
+    roomCell.textLabel.text = [NSString stringWithFormat:@"%i",currentRoom.number];
     
     return roomCell;
 }
