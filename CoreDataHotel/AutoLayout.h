@@ -32,9 +32,17 @@
                                                toView:(UIView *)otherView
                                        withMultiplyer:(CGFloat)multiplier;
 
++(NSLayoutConstraint *) topConstraintFrom:(UIView *)view
+                                   toView:(UIView *)otherView
+                               withOffset:(CGFloat)offset;
+
 +(NSLayoutConstraint *) leadingConstraintFrom:(UIView *)view
                                        toView:(UIView *)otherView;
 
 +(NSLayoutConstraint *) trailingConstraintFrom:(UIView *)view
                                          toView:(UIView *)overView;
+
++(NSLayoutConstraint *) topConstraintFrom:(UIView *)view
+                                   toView:(UIView *)otherView;
+
 @end

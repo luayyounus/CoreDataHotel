@@ -59,18 +59,18 @@
 		0160494D1EAF137600B5A8FF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0135417D1EAFBCA8006F156E /* DatePickerViewController.h */,
-				0135417E1EAFBCA8006F156E /* DatePickerViewController.m */,
 				013541801EAFCF94006F156E /* AvailabilityViewController.h */,
 				013541811EAFCF94006F156E /* AvailabilityViewController.m */,
+				0135417D1EAFBCA8006F156E /* DatePickerViewController.h */,
+				0135417E1EAFBCA8006F156E /* DatePickerViewController.m */,
 				0120F5A51EAF2AB200F9F961 /* RoomsViewController.h */,
 				0120F5A61EAF2AB200F9F961 /* RoomsViewController.m */,
-				01CF1C4E1EAE5F30001EDE4C /* AppDelegate.h */,
-				01CF1C4F1EAE5F30001EDE4C /* AppDelegate.m */,
-				01CF1C511EAE5F30001EDE4C /* ViewController.h */,
-				01CF1C521EAE5F30001EDE4C /* ViewController.m */,
 				01CF1C6F1EAEA485001EDE4C /* HotelsViewController.h */,
 				01CF1C701EAEA485001EDE4C /* HotelsViewController.m */,
+				01CF1C511EAE5F30001EDE4C /* ViewController.h */,
+				01CF1C521EAE5F30001EDE4C /* ViewController.m */,
+				01CF1C4E1EAE5F30001EDE4C /* AppDelegate.h */,
+				01CF1C4F1EAE5F30001EDE4C /* AppDelegate.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";

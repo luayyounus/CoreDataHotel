@@ -8,6 +8,7 @@
 
 #import "DatePickerViewController.h"
 #import "AvailabilityViewController.h"
+#import "AutoLayout.h"
 
 @interface DatePickerViewController ()
 
@@ -55,9 +56,12 @@
     //LABWORK
     self.endDate = [[UIDatePicker alloc]init];
     self.endDate.datePickerMode = UIDatePickerModeDateAndTime;
-    
-    //acount for in LABWORK - make sure you assing constraints and not a frame
-    self.endDate.frame = CGRectMake(0, 84.0, self.view.frame.size.width, 200.0);
+    [self.view addSubview:self.endDate];
+    self.endDate.translatesAutoresizingMaskIntoConstraints = NO;
+
+    [AutoLayout topConstraintFrom:self.endDate toView:self.view withOffset:50.0];
+    [AutoLayout leadingConstraintFrom:self.endDate toView:self.view];
+    [AutoLayout trailingConstraintFrom:self.endDate toView:self.view];
     
     
     

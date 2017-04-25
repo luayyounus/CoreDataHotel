@@ -82,6 +82,22 @@
     
 }
 
++(NSLayoutConstraint *) topConstraintFrom:(UIView *)view
+                                   toView:(UIView *)otherView
+                               withOffset:(CGFloat)offset{
+    
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:otherView attribute:NSLayoutAttributeTop multiplier:1.0 constant:offset];
+    
+    constraint.active = YES;
+    return constraint;
+}
+
++(NSLayoutConstraint *) topConstraintFrom:(UIView *)view
+                                   toView:(UIView *)otherView{
+    return [AutoLayout genericConstraintFrom:view toView:otherView withAttribute:NSLayoutAttributeTop];
+    
+}
+
 +(NSLayoutConstraint *) leadingConstraintFrom:(UIView *)view
                                        toView:(UIView *)otherView{
     return [AutoLayout genericConstraintFrom:view toView:otherView withAttribute:NSLayoutAttributeLeading];
@@ -92,6 +108,5 @@
     return [AutoLayout genericConstraintFrom:view toView:otherView withAttribute:NSLayoutAttributeTrailing];
     
 }
-
 
 @end
