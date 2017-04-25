@@ -47,6 +47,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0160494D1EAF137600B5A8FF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				01CF1C4E1EAE5F30001EDE4C /* AppDelegate.h */,
+				01CF1C4F1EAE5F30001EDE4C /* AppDelegate.m */,
+				01CF1C511EAE5F30001EDE4C /* ViewController.h */,
+				01CF1C521EAE5F30001EDE4C /* ViewController.m */,
+				01CF1C6F1EAEA485001EDE4C /* HotelsViewController.h */,
+				01CF1C701EAEA485001EDE4C /* HotelsViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		0160494E1EAF138900B5A8FF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				01CF1C5A1EAE5F30001EDE4C /* Assets.xcassets */,
+				01CF1C5C1EAE5F30001EDE4C /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		01CF1C3F1EAE5F2F001EDE4C = {
 			isa = PBXGroup;
 			children = (
@@ -66,15 +88,9 @@
 		01CF1C4A1EAE5F30001EDE4C /* CoreDataHotel */ = {
 			isa = PBXGroup;
 			children = (
-				01CF1C4E1EAE5F30001EDE4C /* AppDelegate.h */,
-				01CF1C4F1EAE5F30001EDE4C /* AppDelegate.m */,
-				01CF1C511EAE5F30001EDE4C /* ViewController.h */,
-				01CF1C521EAE5F30001EDE4C /* ViewController.m */,
-				01CF1C6F1EAEA485001EDE4C /* HotelsViewController.h */,
-				01CF1C701EAEA485001EDE4C /* HotelsViewController.m */,
+				0160494D1EAF137600B5A8FF /* Controllers */,
 				01CF1C681EAE6D3D001EDE4C /* Model */,
-				01CF1C5A1EAE5F30001EDE4C /* Assets.xcassets */,
-				01CF1C5C1EAE5F30001EDE4C /* LaunchScreen.storyboard */,
+				0160494E1EAF138900B5A8FF /* View */,
 				01CF1C5F1EAE5F30001EDE4C /* Info.plist */,
 				01CF1C571EAE5F30001EDE4C /* CoreDataHotel.xcdatamodeld */,
 				01CF1C4B1EAE5F30001EDE4C /* Supporting Files */,
@@ -330,6 +346,7 @@
 				01CF1C641EAE5F30001EDE4C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
