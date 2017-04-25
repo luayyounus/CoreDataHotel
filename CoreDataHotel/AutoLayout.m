@@ -87,7 +87,7 @@
     return [AutoLayout genericConstraintFrom:view toView:otherView withAttribute:NSLayoutAttributeLeading];
 }
 
-+(NSLayoutConstraint *) trailingContraintsFrom:(UIView *)view
++(NSLayoutConstraint *) trailingConstraintFrom:(UIView *)view
                                         toView:(UIView *)otherView{
     return [AutoLayout genericConstraintFrom:view toView:otherView withAttribute:NSLayoutAttributeTrailing];
     

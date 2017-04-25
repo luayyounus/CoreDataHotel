@@ -35,6 +35,6 @@
 +(NSLayoutConstraint *) leadingConstraintFrom:(UIView *)view
                                        toView:(UIView *)otherView;
 
-+(NSLayoutConstraint *) trailingContraintsFrom:(UIView *)view
++(NSLayoutConstraint *) trailingConstraintFrom:(UIView *)view
                                          toView:(UIView *)overView;
 @end
