@@ -37,8 +37,6 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     [self allHotels];
-//[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
-  
 }
 
 -(void)setupLayout{
@@ -46,7 +44,9 @@
     [self.view addSubview:self.tableView];
     self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
     self.tableView.backgroundColor = [UIColor whiteColor];
-    [AutoLayout fullScreenConstraintsWithVFLForView:self.tableView];    
+    [AutoLayout fullScreenConstraintsWithVFLForView:self.tableView];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+
 }
 
 //getter, if we dont have the data for all Hotels, go bring it!
