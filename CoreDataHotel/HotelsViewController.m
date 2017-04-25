@@ -12,6 +12,8 @@
 #import "Hotel+CoreDataProperties.h"
 #import "AutoLayout.h"
 #import "ViewController.h"
+#import "RoomsViewController.h"
+
 
 @interface HotelsViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -41,7 +43,7 @@
     self.tableView = [[UITableView alloc]init];
     [self.view addSubview:self.tableView];
     self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
-    self.tableView.backgroundColor = [UIColor greenColor];
+    self.tableView.backgroundColor = [UIColor whiteColor];
     [AutoLayout fullScreenConstraintsWithVFLForView:self.tableView];    
 }
 
@@ -79,5 +81,12 @@
     cell.textLabel.text = currentHotel.name;
     return cell;
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    RoomsViewController *roomVC = [[RoomsViewController alloc]init];
+    roomVC.hotel = self.allHotels[indexPath.row];
+    [self.navigationController pushViewController:roomVC animated:YES];
+}
+
 
 @end

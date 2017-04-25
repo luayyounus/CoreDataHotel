@@ -28,13 +28,13 @@
 
 -(void)setupLayout{
     
-    float navBarHeight = CGRectGetHeight(self.navigationController.navigationBar.frame);
-    CGFloat statusBarHeight = 20.0;
     
     UIButton *browseButton = [self createButtonWithTitle:@"Browse"];
     UIButton *bookButton = [self createButtonWithTitle:@"Book"];
     UIButton *lookupButton = [self createButtonWithTitle:@"Look Up"];
-    
+
+    float navBarHeight = CGRectGetHeight(self.navigationController.navigationBar.frame);
+    CGFloat statusBarHeight = 20.0; 
     CGFloat topMargin = navBarHeight + statusBarHeight;
     CGFloat windowHeight = self.view.frame.size.height;
     CGFloat buttonHeight = ((windowHeight - topMargin) / 3);
@@ -80,9 +80,6 @@
     [button setTitle:title forState:UIControlStateNormal];
     [button setTitleShadowColor:[UIColor greenColor] forState:UIControlStateSelected];
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    
-    
-    //it will apply sconstraints to this - We tell it NO! use our contraints
     [button setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     [self.view addSubview:button];
