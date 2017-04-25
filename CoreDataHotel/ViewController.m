@@ -10,7 +10,7 @@
 #import "AutoLayout.h"
 #import "AppDelegate.h"
 #import "HotelsViewController.h"
-
+#import "DatePickerViewController.h"
 
 @interface ViewController ()
 
@@ -21,7 +21,7 @@
 -(void)loadView{
     [super loadView];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    [self.view setBackgroundColor:[UIColor whiteColor]];
     
     [self setupLayout];
 }
@@ -67,6 +67,9 @@
 }
 
 -(void)bookButtonSelected{
+    DatePickerViewController *datePickerController = [[DatePickerViewController alloc]init];
+    
+    [self.navigationController pushViewController:datePickerController animated:YES];
     
 }
 

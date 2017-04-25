@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0120F5A71EAF2AB200F9F961 /* RoomsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0120F5A61EAF2AB200F9F961 /* RoomsViewController.m */; };
+		0135417F1EAFBCA8006F156E /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0135417E1EAFBCA8006F156E /* DatePickerViewController.m */; };
 		01CF1C4D1EAE5F30001EDE4C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CF1C4C1EAE5F30001EDE4C /* main.m */; };
 		01CF1C501EAE5F30001EDE4C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CF1C4F1EAE5F30001EDE4C /* AppDelegate.m */; };
 		01CF1C531EAE5F30001EDE4C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CF1C521EAE5F30001EDE4C /* ViewController.m */; };
@@ -22,6 +23,8 @@
 /* Begin PBXFileReference section */
 		0120F5A51EAF2AB200F9F961 /* RoomsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomsViewController.h; sourceTree = "<group>"; };
 		0120F5A61EAF2AB200F9F961 /* RoomsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomsViewController.m; sourceTree = "<group>"; };
+		0135417D1EAFBCA8006F156E /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
+		0135417E1EAFBCA8006F156E /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		01CF1C481EAE5F30001EDE4C /* CoreDataHotel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataHotel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01CF1C4C1EAE5F30001EDE4C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		01CF1C4E1EAE5F30001EDE4C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -53,6 +56,8 @@
 		0160494D1EAF137600B5A8FF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0135417D1EAFBCA8006F156E /* DatePickerViewController.h */,
+				0135417E1EAFBCA8006F156E /* DatePickerViewController.m */,
 				0120F5A51EAF2AB200F9F961 /* RoomsViewController.h */,
 				0120F5A61EAF2AB200F9F961 /* RoomsViewController.m */,
 				01CF1C4E1EAE5F30001EDE4C /* AppDelegate.h */,
@@ -193,6 +198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0135417F1EAFBCA8006F156E /* DatePickerViewController.m in Sources */,
 				01CF1C531EAE5F30001EDE4C /* ViewController.m in Sources */,
 				01CF1C591EAE5F30001EDE4C /* CoreDataHotel.xcdatamodeld in Sources */,
 				01CF1C501EAE5F30001EDE4C /* AppDelegate.m in Sources */,
