@@ -10,7 +10,7 @@
 
 @interface AvailabilityViewController : UIViewController
 
-@property(strong,nonatomic) NSData *startDate;
+@property(strong,nonatomic) NSDate *startDate;
 @property(strong,nonatomic) NSDate *endDate;
 
 

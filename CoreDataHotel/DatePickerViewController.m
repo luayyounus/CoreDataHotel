@@ -41,16 +41,8 @@
     NSDate *startDate = self.startDate.date;
     NSDate *endDate = self.endDate.date;
     
-    if ([endDate timeIntervalSinceReferenceDate] < [startDate timeIntervalSinceReferenceDate]) {
-        self.endDate.date = self.startDate.date;
-    }
-    
-    if ([endDate timeIntervalSinceReferenceDate] < [endDate timeIntervalSinceReferenceDate]){
-        self.endDate.date = [NSDate date];
-        
-    }
-    
     AvailabilityViewController *availabilityVC = [[AvailabilityViewController alloc]init];
+    availabilityVC.startDate = startDate;
     availabilityVC.endDate = endDate;
     [self.navigationController pushViewController:availabilityVC animated:YES];
 
@@ -63,7 +55,7 @@
 
 -(void)eventListenerForStartDate{
     NSCalendar *calender = [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    self.endDate.date = [calender dateByAddingUnit:NSCalendarUnitDay value:1 toDate:self.startDate.date options:NSCalendarMatchFirst];
+    self.endDate.minimumDate = [calender dateByAddingUnit:NSCalendarUnitDay value:1 toDate:self.startDate.date options:NSCalendarMatchFirst];
 
 }
 
