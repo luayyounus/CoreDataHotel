@@ -57,7 +57,7 @@
         
         NSError *jsonError;
         
-        NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:NSPropertyListMutableContainers error:&jsonError];
+        NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&jsonError];
         
         if (jsonError){
             NSLog(@"%@", jsonError.localizedDescription);

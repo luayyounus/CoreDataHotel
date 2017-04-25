@@ -8,6 +8,9 @@
 
 #import "ViewController.h"
 #import "AutoLayout.h"
+#import "AppDelegate.h"
+#import "HotelsViewController.h"
+
 
 @interface ViewController ()
 
@@ -37,7 +40,7 @@
     [AutoLayout trailingContraintsFrom:browseButton toView:self.view];
     
     
-    NSLayoutConstraint *browserHeight = [AutoLayout equalHeightConstraintFromView:browseButton toView:self.view withMultiplyer:0.33];
+    NSLayoutConstraint *browserHeight = [AutoLayout equalHeightConstraintFromView:browseButton toView:self.view withMultiplyer:0.2];
     
     [browseButton addTarget:self action:@selector(browseButtonSelected) forControlEvents:UIControlEventTouchUpInside];
     
@@ -45,7 +48,8 @@
 }
 
 -(void)browseButtonSelected{
-    NSLog(@"LAB");
+    HotelsViewController *hotelViewController = [[HotelsViewController alloc]init];
+    [self.navigationController pushViewController:hotelViewController animated:YES];
 }
 
 -(UIButton *)createButtonWithTitle:(NSString *)title{
@@ -66,13 +70,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 

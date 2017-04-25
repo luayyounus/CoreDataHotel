@@ -11,8 +11,9 @@
 #import "Hotel+CoreDataClass.h"
 #import "Hotel+CoreDataProperties.h"
 #import "AutoLayout.h"
+#import "ViewController.h"
 
-@interface HotelsViewController ()<UITableViewDataSource>
+@interface HotelsViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property(strong,nonatomic) NSArray *allHotels;
 @property(strong,nonatomic) UITableView *tableView;
@@ -30,24 +31,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.tableView.dataSource = self;
-    [self.tableView registerClass:[UITableView class] forCellReuseIdentifier:@"cell"];
-    
+    self.tableView.delegate = self;
     [self allHotels];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
 }
 
 -(void)setupLayout{
     self.tableView = [[UITableView alloc]init];
     [self.view addSubview:self.tableView];
     self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
-    self.tableView.backgroundColor = [UIColor whiteColor];
+    self.tableView.backgroundColor = [UIColor greenColor];
     [AutoLayout fullScreenConstraintsWithVFLForView:self.tableView];    
 }
 
 //getter, if we dont have the data for all Hotels, go bring it!
 -(NSArray *)allHotels{
-    if(!self.allHotels){
+    if(!_allHotels){
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
         
         NSManagedObjectContext *context = appDelegate.persistentContainer.viewContext;
@@ -61,11 +61,11 @@
             NSLog(@"There was an error fetching hotels from Core Data!");
         }
         
-        self.allHotels = hotels;
+        _allHotels = hotels;
         NSLog(@"%@", self.allHotels);
     }
     
-    return self.allHotels;
+    return _allHotels;
 
 }
 
@@ -76,7 +76,6 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     Hotel *currentHotel = self.allHotels[indexPath.row];
-    
     cell.textLabel.text = currentHotel.name;
     return cell;
 }
