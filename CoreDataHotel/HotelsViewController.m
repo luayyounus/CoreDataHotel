@@ -28,15 +28,17 @@
 -(void)loadView{
     [super loadView];
     
-    [self setupLayout];
 }
 
 - (void)viewDidLoad {
+    [self setupLayout];
+
     [super viewDidLoad];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     [self allHotels];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+//[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+  
 }
 
 -(void)setupLayout{
