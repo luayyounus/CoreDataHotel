@@ -23,6 +23,11 @@
 
 +(NSArray *)fullScreenConstraintsWithVFLForView:(UIView *)view;
 
++(NSArray *)constraintsWithVFLForViewDictionary:(NSDictionary *)viewDictionary
+                           forMetricsDictionary:(NSDictionary *)metricsDictionary
+                                    withOptions:(NSLayoutFormatOptions)options
+                               withVisualFormat:(NSString *)visualFormat;
+
 +(NSLayoutConstraint *) equalHeightConstraintFromView:(UIView *)view
                                                toView:(UIView *)otherView
                                        withMultiplyer:(CGFloat)multiplier;
@@ -30,6 +35,6 @@
 +(NSLayoutConstraint *) leadingConstraintFrom:(UIView *)view
                                        toView:(UIView *)otherView;
 
-+(NSLayoutConstraint *) trailingContraintsFrom:(UIView *)view
++(NSLayoutConstraint *) trailingConstraintFrom:(UIView *)view
                                          toView:(UIView *)overView;
 @end

@@ -8,6 +8,9 @@
 
 #import "ViewController.h"
 #import "AutoLayout.h"
+#import "AppDelegate.h"
+#import "HotelsViewController.h"
+
 
 @interface ViewController ()
 
@@ -25,27 +28,50 @@
 
 -(void)setupLayout{
     
-//    float navBarHEight = CGRect
     
     UIButton *browseButton = [self createButtonWithTitle:@"Browse"];
     UIButton *bookButton = [self createButtonWithTitle:@"Book"];
     UIButton *lookupButton = [self createButtonWithTitle:@"Look Up"];
+
+    float navBarHeight = CGRectGetHeight(self.navigationController.navigationBar.frame);
+    CGFloat statusBarHeight = 20.0; 
+    CGFloat topMargin = navBarHeight + statusBarHeight;
+    CGFloat windowHeight = self.view.frame.size.height;
+    CGFloat buttonHeight = ((windowHeight - topMargin) / 3);
     
-    browseButton.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:0.75 alpha:1.0];
+    NSDictionary *viewDictionary = @{@"browseButton": browseButton, @"bookButton": bookButton, @"lookupButton": lookupButton};
+    NSDictionary *metricsDictionary = @{@"topMargin": [NSNumber numberWithFloat:topMargin], @"buttonHeight": [NSNumber numberWithFloat:buttonHeight]};
+    NSString *visualFormatString = @"V:|-topMargin-[browseButton(==buttonHeight)][bookButton(==browseButton)][lookupButton(==browseButton)]|";
     
+    [AutoLayout constraintsWithVFLForViewDictionary:viewDictionary forMetricsDictionary:metricsDictionary withOptions:0 withVisualFormat:visualFormatString];
+
+    browseButton.backgroundColor = [UIColor whiteColor];
     [AutoLayout leadingConstraintFrom:browseButton toView:self.view];
-    [AutoLayout trailingContraintsFrom:browseButton toView:self.view];
-    
-    
-    NSLayoutConstraint *browserHeight = [AutoLayout equalHeightConstraintFromView:browseButton toView:self.view withMultiplyer:0.33];
-    
+    [AutoLayout trailingConstraintFrom:browseButton toView:self.view];
     [browseButton addTarget:self action:@selector(browseButtonSelected) forControlEvents:UIControlEventTouchUpInside];
     
-    browserHeight.constant = 100;
+    bookButton.backgroundColor = [UIColor greenColor];
+    [AutoLayout leadingConstraintFrom:bookButton toView:self.view];
+    [AutoLayout trailingConstraintFrom:bookButton toView:self.view];
+    [bookButton addTarget:self action:@selector(bookButtonSelected) forControlEvents:UIControlEventTouchUpInside];
+    
+    lookupButton.backgroundColor = [UIColor grayColor];
+    [AutoLayout leadingConstraintFrom:lookupButton toView:self.view];
+    [AutoLayout trailingConstraintFrom:lookupButton toView:self.view];
+    [lookupButton addTarget:self action:@selector(lookupButtonSelected) forControlEvents:UIControlEventTouchUpInside];
 }
 
 -(void)browseButtonSelected{
-    NSLog(@"LAB");
+    HotelsViewController *hotelViewController = [[HotelsViewController alloc]init];
+    [self.navigationController pushViewController:hotelViewController animated:YES];
+}
+
+-(void)bookButtonSelected{
+    
+}
+
+-(void)lookupButtonSelected{
+    
 }
 
 -(UIButton *)createButtonWithTitle:(NSString *)title{
@@ -54,9 +80,6 @@
     [button setTitle:title forState:UIControlStateNormal];
     [button setTitleShadowColor:[UIColor greenColor] forState:UIControlStateSelected];
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    
-    
-    //it will apply sconstraints to this - We tell it NO! use our contraints
     [button setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     [self.view addSubview:button];
@@ -66,13 +89,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
