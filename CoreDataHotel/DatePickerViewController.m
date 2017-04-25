@@ -89,7 +89,7 @@
     [AutoLayout topConstraintFrom:self.endDate toView:self.view withOffset:self.startDate.frame.size.height];
     [AutoLayout leadingConstraintFrom:self.endDate toView:self.view];
     [AutoLayout trailingConstraintFrom:self.endDate toView:self.view];
-    self.endDate.minimumDate = [NSDate date];
+    [self eventListenerForStartDate];
 }
 
 
