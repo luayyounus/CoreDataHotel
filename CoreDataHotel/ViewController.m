@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "AutoLayout.h"
 
 @interface ViewController ()
 
@@ -18,6 +19,49 @@
     [super loadView];
     
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self setupLayout];
+}
+
+-(void)setupLayout{
+    
+//    float navBarHEight = CGRect
+    
+    UIButton *browseButton = [self createButtonWithTitle:@"Browse"];
+    UIButton *bookButton = [self createButtonWithTitle:@"Book"];
+    UIButton *lookupButton = [self createButtonWithTitle:@"Look Up"];
+    
+    browseButton.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:0.75 alpha:1.0];
+    
+    [AutoLayout leadingConstraintFrom:browseButton toView:self.view];
+    [AutoLayout trailingContraintsFrom:browseButton toView:self.view];
+    
+    
+    NSLayoutConstraint *browserHeight = [AutoLayout equalHeightConstraintFromView:browseButton toView:self.view withMultiplyer:0.33];
+    
+    [browseButton addTarget:self action:@selector(browseButtonSelected) forControlEvents:UIControlEventTouchUpInside];
+    
+    browserHeight.constant = 100;
+}
+
+-(void)browseButtonSelected{
+    NSLog(@"LAB");
+}
+
+-(UIButton *)createButtonWithTitle:(NSString *)title{
+    UIButton *button = [[UIButton alloc]init];
+    
+    [button setTitle:title forState:UIControlStateNormal];
+    [button setTitleShadowColor:[UIColor greenColor] forState:UIControlStateSelected];
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    
+    //it will apply sconstraints to this - We tell it NO! use our contraints
+    [button setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    [self.view addSubview:button];
+    
+    return button;
 }
 
 - (void)viewDidLoad {
