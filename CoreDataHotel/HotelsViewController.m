@@ -27,12 +27,12 @@
 
 -(void)loadView{
     [super loadView];
+    self.view.backgroundColor = [UIColor whiteColor];
+    [self setupLayout];
     
 }
 
 - (void)viewDidLoad {
-    [self setupLayout];
-
     [super viewDidLoad];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -40,10 +40,9 @@
 }
 
 -(void)setupLayout{
-    self.tableView = [[UITableView alloc]init];
-    [self.view addSubview:self.tableView];
+    self.tableView = [[UITableView alloc] init];
     self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
-    self.tableView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:self.tableView];
     [AutoLayout fullScreenConstraintsWithVFLForView:self.tableView];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
 

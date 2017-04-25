@@ -11,7 +11,7 @@
 @implementation AutoLayout
 
 +(NSArray *)fullScreenConstraintsWithVFLForView:(UIView *)view{
-    NSArray *constraints = [[NSMutableArray alloc]init];
+    NSMutableArray *constraints = [[NSMutableArray alloc]init];
     
     NSDictionary *viewDictionary = @{@"view": view};
     
@@ -25,8 +25,8 @@
                                                                              metrics:nil
                                                                              views:viewDictionary];
     
-    [constraints arrayByAddingObjectsFromArray:horizontalConstraints];
-    [constraints arrayByAddingObjectsFromArray:verticalConstraints];
+    [constraints addObjectsFromArray:horizontalConstraints];
+    [constraints addObjectsFromArray:verticalConstraints];
     
     //activate the constraints so they will work
     [NSLayoutConstraint activateConstraints:constraints];
