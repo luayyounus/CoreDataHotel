@@ -11,14 +11,12 @@
 #import "Guest+CoreDataClass.h"
 #import "Guest+CoreDataProperties.h"
 
-
 @interface BookViewController ()<UITextFieldDelegate>
 
 @property(strong,nonatomic) UITextField *firstNameField;
 @property(strong,nonatomic) UITextField *lastNameField;
 @property(strong,nonatomic) UITextField *emailField;
 @property(strong,nonatomic) UIButton *bookButton;
-
 
 @end
 
@@ -40,15 +38,13 @@
     [self.view addSubview:self.bookButton];
     
     [self setupUserLayout];
-    
+    [self.bookButton addTarget:self
+                        action:@selector(bookButtonPressed)
+              forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.bookButton setEnabled:NO];
-    
-    
-    
 }
 
 -(void)setupUserLayout{
@@ -57,37 +53,27 @@
     self.emailField.translatesAutoresizingMaskIntoConstraints = NO;
     self.bookButton.translatesAutoresizingMaskIntoConstraints = NO;
     
-    self.firstNameField.placeholder = @"First Name";
+    [self.bookButton setTitle:@"  Book Room  " forState:UIControlStateNormal];
+    [self.bookButton sizeToFit];
+    [self.bookButton setTitleColor:[UIColor colorWithRed:36/255.0 green:71/255.0 blue:113/255.0 alpha:1.0] forState:UIControlStateNormal];
+    [self.bookButton alignmentRectInsets];
+    [self.bookButton setBackgroundColor:[UIColor whiteColor]];
+    [[self.bookButton layer] setCornerRadius:2.0f];
+    [[self.bookButton layer] setMasksToBounds:YES];
+    [[self.bookButton layer] setBorderWidth:2.0f];
+    [AutoLayout topConstraintFrom:self.bookButton toView:self.view withOffset:200];
+    
+    self.firstNameField.placeholder = @"First Name (Required)";
     self.lastNameField.placeholder = @"Last Name (Optional)";
     self.emailField.placeholder = @"Email (Optional)";
-    
-    
-    
-    if([self.firstNameField.text isEqualToString:@""] || [self.firstNameField.text isEqualToString:@" "]) {
-        [self.bookButton setEnabled:YES];
-        self.bookButton.backgroundColor = [UIColor grayColor];
-    }
-    
-    
-    [self bookButtonPressed];
-
     
     self.firstNameField.borderStyle = UITextBorderStyleRoundedRect;
     self.lastNameField.borderStyle = UITextBorderStyleRoundedRect;
     self.emailField.borderStyle = UITextBorderStyleRoundedRect;
     
-    
-    [UIButton buttonWithType:UIButtonTypeSystem];
-    [self.bookButton setTitle:@"Book Room" forState:UIControlStateNormal];
-    [self.bookButton sizeToFit];
-    self.bookButton.center = CGPointMake(320/2, 60);
-
-    
     self.firstNameField.spellCheckingType = UITextSpellCheckingTypeNo;
     self.lastNameField.spellCheckingType = UITextSpellCheckingTypeNo;
     self.emailField.spellCheckingType = UITextSpellCheckingTypeNo;
-    
-
     
     [AutoLayout topConstraintFrom:self.firstNameField toView:self.view withOffset:80];
     [AutoLayout topConstraintFrom:self.lastNameField toView:self.view withOffset:120];
@@ -100,18 +86,7 @@
     [AutoLayout trailingConstraintFrom:self.firstNameField toView:self.view];
     [AutoLayout trailingConstraintFrom:self.lastNameField toView:self.view];
     [AutoLayout trailingConstraintFrom:self.emailField toView:self.view];
-    
-//    float navBarHeight = CGRectGetHeight(self.navigationController.navigationBar.frame);
-//    CGFloat statusBarHeight = 20.0;
-//    CGFloat topMargin = 5;
-//    CGFloat windowHeight = self.view.frame.size.height;
-//    CGFloat textFieldHeight = ((windowHeight - topMargin) / 20);
-//    
-//    NSDictionary *viewDictionary = @{@"firstName": self.firstNameField, @"lastName": self.lastNameField, @"emailAddress": self.emailField};
-//    NSDictionary *metricsDictionary = @{@"topMargin": [NSNumber numberWithFloat:topMargin], @"textFieldHeight": [NSNumber numberWithFloat:2]};
-//    NSString *visualFormatString = @"H:|-[firstName-|";
-//    
-//    [AutoLayout constraintsWithVFLForViewDictionary:viewDictionary forMetricsDictionary:metricsDictionary withOptions:0 withVisualFormat:visualFormatString];
+
 }
 
 -(void)bookButtonPressed{
@@ -123,5 +98,33 @@
     newGuest.emailAddress = [NSString stringWithFormat:@"%@", self.emailField.text];
 }
 
+//if([self.firstNameField.text isEqualToString:@""] || [self.firstNameField.text isEqualToString:@" "]) {
+//    [self.bookButton setEnabled:NO];
+//    [[self.bookButton layer] setBorderColor:[UIColor redColor].CGColor];
+//} else {
+//    [self.bookButton setEnabled:YES];
+//    [[self.bookButton layer] setBorderColor:[UIColor greenColor].CGColor];
+//}
+
+//    [self.firstNameField addTarget:self
+//                            action:@selector(textFieldDidChange:)
+//        forControlEvents:UIControlEventEditingChanged];
+//
+//    -(void)textFieldDidChange:(UITextField *)theTextField{
+//
+//    }
+
+
+//    float navBarHeight = CGRectGetHeight(self.navigationController.navigationBar.frame);
+//    CGFloat statusBarHeight = 20.0;
+//    CGFloat topMargin = 5;
+//    CGFloat windowHeight = self.view.frame.size.height;
+//    CGFloat textFieldHeight = ((windowHeight - topMargin) / 20);
+//
+//    NSDictionary *viewDictionary = @{@"firstName": self.firstNameField, @"lastName": self.lastNameField, @"emailAddress": self.emailField};
+//    NSDictionary *metricsDictionary = @{@"topMargin": [NSNumber numberWithFloat:topMargin], @"textFieldHeight": [NSNumber numberWithFloat:2]};
+//    NSString *visualFormatString = @"H:|-[firstName-|";
+//
+//    [AutoLayout constraintsWithVFLForViewDictionary:viewDictionary forMetricsDictionary:metricsDictionary withOptions:0 withVisualFormat:visualFormatString];
 
 @end
