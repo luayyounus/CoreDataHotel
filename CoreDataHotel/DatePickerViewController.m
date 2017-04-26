@@ -56,7 +56,6 @@
 -(void)eventListenerForStartDate{
     NSCalendar *calender = [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     self.endDate.minimumDate = [calender dateByAddingUnit:NSCalendarUnitDay value:1 toDate:self.startDate.date options:NSCalendarMatchFirst];
-
 }
 
 -(void)setupDatePickers{

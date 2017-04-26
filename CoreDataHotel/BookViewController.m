@@ -7,18 +7,17 @@
 //
 
 #import "BookViewController.h"
+#import "AutoLayout.h"
 
 @interface BookViewController ()
 
 @property(strong,nonatomic) NSString *firstName;
 @property(strong,nonatomic) NSString *lastName;
 @property(strong,nonatomic) NSString *email;
-@property(strong,nonatomic) NSNumber *creditCard;
 
 @property(strong,nonatomic) UITextField *firstNameLabel;
 @property(strong,nonatomic) UITextField *lastNameLabel;
 @property(strong,nonatomic) UITextField *emailLabel;
-@property(strong,nonatomic) UITextField *creditCardLabel;
 
 @end
 
@@ -26,10 +25,16 @@
 
 -(void)loadView{
     [super loadView];
-    
+    [self.view setBackgroundColor:[UIColor whiteColor]];
+    [self.view addSubview:self.firstNameLabel];
+    [self.view addSubview:self.lastNameLabel];
+    [self.view addSubview:self.emailLabel];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.firstNameLabel = [[UITextField alloc]init];
+    self.lastNameLabel = [[UITextField alloc]init];
+    self.emailLabel = [[UITextField alloc]init];
     
 }
 
