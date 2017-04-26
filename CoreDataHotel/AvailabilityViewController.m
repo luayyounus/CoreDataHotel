@@ -121,6 +121,8 @@
     
     BookViewController *bookVC = [[BookViewController alloc]init];
     bookVC.room = room;
+    bookVC.startDate = self.startDate;
+    bookVC.endDate = self.endDate;
     [self.navigationController pushViewController:bookVC animated:YES];
 }
 
