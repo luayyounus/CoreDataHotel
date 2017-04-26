@@ -10,6 +10,11 @@
 #import "AutoLayout.h"
 #import "Guest+CoreDataClass.h"
 #import "Guest+CoreDataProperties.h"
+#import "DatePickerViewController.h"
+#import "AppDelegate.h"
+#import "Reservation+CoreDataClass.h"
+#import "Reservation+CoreDataProperties.h"
+
 
 @interface BookViewController ()<UITextFieldDelegate>
 
@@ -91,11 +96,31 @@
 
 -(void)bookButtonPressed{
     
-    Guest *newGuest;
     
-    newGuest.firstName = [NSString stringWithFormat:@"%@", self.firstNameField.text];
-    newGuest.lastName =  [NSString stringWithFormat:@"%@", self.lastNameField.text];
-    newGuest.emailAddress = [NSString stringWithFormat:@"%@", self.emailField.text];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = appDelegate.persistentContainer.viewContext;
+    
+    Reservation *reservation = [NSEntityDescription insertNewObjectForEntityForName:@"Reservation" inManagedObjectContext:context];
+    
+    reservation.startDate = self.startDate;
+    reservation.endDate = self.endDate;
+    reservation.room = self.room;
+    
+    reservation.guest = [NSEntityDescription insertNewObjectForEntityForName:@"Guest" inManagedObjectContext:context];
+    
+    reservation.guest.firstName = self.firstNameField.text;
+    reservation.guest.lastName = self.lastNameField.text;
+    reservation.guest.emailAddress = self.emailField.text;
+    
+    NSError *saveError;
+    if (saveError){
+        NSLog(@"The Reservation is NOT made");
+    } else {
+        NSLog(@"The Reservation is made successfully");
+        [self.navigationController popToRootViewControllerAnimated:YES];
+
+    }
+    
 }
 
 //if([self.firstNameField.text isEqualToString:@""] || [self.firstNameField.text isEqualToString:@" "]) {
