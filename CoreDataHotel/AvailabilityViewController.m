@@ -50,9 +50,11 @@
         
         NSSortDescriptor *roomSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"hotel.name" ascending:YES];
         
+        NSSortDescriptor *roomNumberSortDecriptor = [NSSortDescriptor sortDescriptorWithKey:@"number" ascending:YES];
+        
         
         //the first parameter is the section the will be added
-        roomRequest.sortDescriptors = @[roomSortDescriptor];
+        roomRequest.sortDescriptors = @[roomSortDescriptor,roomNumberSortDecriptor];
         
         NSError *availableRoomError;
         
@@ -126,5 +128,9 @@
     return self.availableRooms.sections.count;
 }
 
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    id<NSFetchedResultsSectionInfo> sectionInfo = [[self.availableRooms sections]objectAtIndex:section];
+    return sectionInfo.name;
+}
 
 @end
