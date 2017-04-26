@@ -10,6 +10,7 @@
 		0120F5A71EAF2AB200F9F961 /* RoomsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0120F5A61EAF2AB200F9F961 /* RoomsViewController.m */; };
 		0135417F1EAFBCA8006F156E /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0135417E1EAFBCA8006F156E /* DatePickerViewController.m */; };
 		013541821EAFCF94006F156E /* AvailabilityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 013541811EAFCF94006F156E /* AvailabilityViewController.m */; };
+		019ED9E71EAFF5C300EDD9B7 /* BookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 019ED9E61EAFF5C300EDD9B7 /* BookViewController.m */; };
 		01CF1C4D1EAE5F30001EDE4C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CF1C4C1EAE5F30001EDE4C /* main.m */; };
 		01CF1C501EAE5F30001EDE4C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CF1C4F1EAE5F30001EDE4C /* AppDelegate.m */; };
 		01CF1C531EAE5F30001EDE4C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CF1C521EAE5F30001EDE4C /* ViewController.m */; };
@@ -28,6 +29,8 @@
 		0135417E1EAFBCA8006F156E /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		013541801EAFCF94006F156E /* AvailabilityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvailabilityViewController.h; sourceTree = "<group>"; };
 		013541811EAFCF94006F156E /* AvailabilityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvailabilityViewController.m; sourceTree = "<group>"; };
+		019ED9E51EAFF5C300EDD9B7 /* BookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookViewController.h; sourceTree = "<group>"; };
+		019ED9E61EAFF5C300EDD9B7 /* BookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookViewController.m; sourceTree = "<group>"; };
 		01CF1C481EAE5F30001EDE4C /* CoreDataHotel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataHotel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01CF1C4C1EAE5F30001EDE4C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		01CF1C4E1EAE5F30001EDE4C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -59,18 +62,20 @@
 		0160494D1EAF137600B5A8FF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0135417D1EAFBCA8006F156E /* DatePickerViewController.h */,
-				0135417E1EAFBCA8006F156E /* DatePickerViewController.m */,
+				019ED9E51EAFF5C300EDD9B7 /* BookViewController.h */,
+				019ED9E61EAFF5C300EDD9B7 /* BookViewController.m */,
 				013541801EAFCF94006F156E /* AvailabilityViewController.h */,
 				013541811EAFCF94006F156E /* AvailabilityViewController.m */,
+				0135417D1EAFBCA8006F156E /* DatePickerViewController.h */,
+				0135417E1EAFBCA8006F156E /* DatePickerViewController.m */,
 				0120F5A51EAF2AB200F9F961 /* RoomsViewController.h */,
 				0120F5A61EAF2AB200F9F961 /* RoomsViewController.m */,
-				01CF1C4E1EAE5F30001EDE4C /* AppDelegate.h */,
-				01CF1C4F1EAE5F30001EDE4C /* AppDelegate.m */,
-				01CF1C511EAE5F30001EDE4C /* ViewController.h */,
-				01CF1C521EAE5F30001EDE4C /* ViewController.m */,
 				01CF1C6F1EAEA485001EDE4C /* HotelsViewController.h */,
 				01CF1C701EAEA485001EDE4C /* HotelsViewController.m */,
+				01CF1C511EAE5F30001EDE4C /* ViewController.h */,
+				01CF1C521EAE5F30001EDE4C /* ViewController.m */,
+				01CF1C4E1EAE5F30001EDE4C /* AppDelegate.h */,
+				01CF1C4F1EAE5F30001EDE4C /* AppDelegate.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -208,6 +213,7 @@
 				01CF1C591EAE5F30001EDE4C /* CoreDataHotel.xcdatamodeld in Sources */,
 				01CF1C501EAE5F30001EDE4C /* AppDelegate.m in Sources */,
 				013541821EAFCF94006F156E /* AvailabilityViewController.m in Sources */,
+				019ED9E71EAFF5C300EDD9B7 /* BookViewController.m in Sources */,
 				01CF1C711EAEA485001EDE4C /* HotelsViewController.m in Sources */,
 				0120F5A71EAF2AB200F9F961 /* RoomsViewController.m in Sources */,
 				01CF1C4D1EAE5F30001EDE4C /* main.m in Sources */,

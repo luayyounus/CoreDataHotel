@@ -82,6 +82,32 @@
     
 }
 
++(NSLayoutConstraint *) equalWidthConstraintFromView:(UIView *)view
+                                              toView:(UIView *)otherView
+                                      withMultiplier:(CGFloat)multiplier{
+    NSLayoutConstraint *widthConstraint = [AutoLayout genericConstraintFrom:view toView:otherView withAttribute:NSLayoutAttributeWidth andMultiplier:multiplier];
+    return widthConstraint;
+}
+
++(NSLayoutConstraint *) topConstraintFrom:(UIView *)view
+                                   toView:(UIView *)otherView
+                               withOffset:(CGFloat)offset{
+    
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:otherView attribute:NSLayoutAttributeTop multiplier:1.0 constant:offset];
+    
+    constraint.active = YES;
+    return constraint;
+}
+
++(NSLayoutConstraint *) topConstraintFrom:(UIView *)view
+                                   toView:(UIView *)otherView{
+    
+    NSLayoutConstraint *constraint = [AutoLayout genericConstraintFrom:view toView:otherView withAttribute:NSLayoutAttributeTop];
+    constraint.active = YES;
+    return constraint;
+    
+}
+
 +(NSLayoutConstraint *) leadingConstraintFrom:(UIView *)view
                                        toView:(UIView *)otherView{
     return [AutoLayout genericConstraintFrom:view toView:otherView withAttribute:NSLayoutAttributeLeading];
@@ -92,6 +118,5 @@
     return [AutoLayout genericConstraintFrom:view toView:otherView withAttribute:NSLayoutAttributeTrailing];
     
 }
-
 
 @end
