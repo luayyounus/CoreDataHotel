@@ -6,6 +6,8 @@
 //  Copyright © 2017 Luay Younus. All rights reserved.
 //
 
+@import Crashlytics;
+
 #import "ViewController.h"
 #import "AutoLayout.h"
 #import "AppDelegate.h"
@@ -28,7 +30,6 @@
 }
 
 -(void)setupLayout{
-    
     
     UIButton *browseButton = [self createButtonWithTitle:@"Browse"];
     UIButton *bookButton = [self createButtonWithTitle:@"Book"];
@@ -63,11 +64,16 @@
 }
 
 -(void)browseButtonSelected{
+    
+    [Answers logCustomEventWithName:@"ViewController - Browse Button Pressed" customAttributes:nil];
+    
     HotelsViewController *hotelViewController = [[HotelsViewController alloc]init];
     [self.navigationController pushViewController:hotelViewController animated:YES];
 }
 
 -(void)bookButtonSelected{
+    [Answers logCustomEventWithName:@"ViewController - Book Button Pressed" customAttributes:nil];
+
     DatePickerViewController *datePickerController = [[DatePickerViewController alloc]init];
     
     [self.navigationController pushViewController:datePickerController animated:YES];
@@ -75,6 +81,8 @@
 }
 
 -(void)lookupButtonSelected{
+    [Answers logCustomEventWithName:@"ViewController - LookUp Button Pressed" customAttributes:nil];
+
     LookUpRerservationController *lookUpController = [[LookUpRerservationController alloc]init];
     
     [self.navigationController pushViewController:lookUpController animated:YES];
@@ -96,11 +104,5 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
 
 @end
