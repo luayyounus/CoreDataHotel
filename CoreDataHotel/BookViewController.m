@@ -6,6 +6,8 @@
 //  Copyright © 2017 Luay Younus. All rights reserved.
 //
 
+@import Crashlytics;
+
 #import "BookViewController.h"
 #import "AutoLayout.h"
 #import "Guest+CoreDataClass.h"
@@ -119,9 +121,16 @@
 
     
     if (saveError){
+        
+        NSDictionary *attributesDictionary = @{@"Save Error" : saveError.localizedDescription};
+        
+        [Answers logCustomEventWithName:@"Save Reservation Error" customAttributes:attributesDictionary];
         NSLog(@"The Reservation is NOT made");
     } else {
+        
         NSLog(@"The Reservation is made successfully");
+        
+        [Answers logCustomEventWithName:@"Saved New Reservation" customAttributes:nil];
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
     
