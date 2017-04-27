@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "HotelsViewController.h"
 #import "DatePickerViewController.h"
+#import "LookUpRerservationController.h"
 
 @interface ViewController ()
 
@@ -74,7 +75,9 @@
 }
 
 -(void)lookupButtonSelected{
+    LookUpRerservationController *lookUpController = [[LookUpRerservationController alloc]init];
     
+    [self.navigationController pushViewController:lookUpController animated:YES];
 }
 
 -(UIButton *)createButtonWithTitle:(NSString *)title{
