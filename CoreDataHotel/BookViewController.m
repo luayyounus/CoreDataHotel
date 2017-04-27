@@ -14,6 +14,7 @@
 #import "AppDelegate.h"
 #import "Reservation+CoreDataClass.h"
 #import "Reservation+CoreDataProperties.h"
+#import "LookUpRerservationController.h"
 
 
 @interface BookViewController ()<UITextFieldDelegate>
@@ -113,13 +114,18 @@
     reservation.guest.emailAddress = self.emailField.text;
     
     NSError *saveError;
+    
+    [context save:&saveError];
+
+    
     if (saveError){
         NSLog(@"The Reservation is NOT made");
     } else {
         NSLog(@"The Reservation is made successfully");
         [self.navigationController popToRootViewControllerAnimated:YES];
-
     }
+    
+    
     
 }
 

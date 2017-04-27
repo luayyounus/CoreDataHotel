@@ -34,7 +34,6 @@
     return YES;
 }
 
-
 //Load the data from the CoreData.. bootstrapping from json file
 -(void)bootstrapApp{
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Hotel"];
