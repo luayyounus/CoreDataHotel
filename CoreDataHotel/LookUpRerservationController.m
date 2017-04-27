@@ -17,34 +17,60 @@
 #import "Guest+CoreDataProperties.h"
 
 
-@interface LookUpRerservationController ()<UITableViewDataSource>
+@interface LookUpRerservationController ()<UITableViewDataSource, UITabBarDelegate, UISearchBarDelegate, UISearchResultsUpdating>
+
+@property(strong, nonatomic) UISearchBar *searchBar;
+@property(strong,nonatomic) UITableView *tableView;
 
 @property(strong,nonatomic) NSFetchedResultsController *allReservations;
-@property(strong,nonatomic) UITableView *tableView;
+@property(strong,nonatomic) NSFetchedResultsController *filteredReservations;
+@property(strong,nonatomic) NSArray *searchResult;
 
 @end
 
-@implementation LookUpRerservationController
+@implementation LookUpRerservationController{
+    NSMutableArray *tableArray;
+    BOOL searchEnabled;
+}
 
 - (void)loadView{
     [super loadView];
     [self setupLayout];
     
 }
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.filteredReservations = self.allReservations;
+    
+    tableArray = [[NSMutableArray alloc]initWithObjects:self.allReservations, nil];
+    self.searchResult = [NSMutableArray arrayWithCapacity:[tableArray count]];
+
+    self.searchBar.delegate = self;
+    self.tableView.dataSource = self;
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+   
+}
 -(void)setupLayout{
+    UISearchController *searchController = [[UISearchController alloc] initWithSearchResultsController:self];
+    [searchController.searchResultsUpdater self];
+    searchController.searchBar.placeholder = @"Enter a guest name";
+    self.definesPresentationContext = YES;
+    
+    self.searchBar = [[UISearchBar alloc]init];
+    self.searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    self.searchBar.keyboardType = UIKeyboardTypeAlphabet;
+
     self.tableView = [[UITableView alloc]init];
+    self.tableView.tableHeaderView = searchController.searchBar;
+    self.searchBar.translatesAutoresizingMaskIntoConstraints = NO;
+    
     [self.view addSubview:self.tableView];
     self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
     self.tableView.backgroundColor = [UIColor whiteColor];
     [AutoLayout fullScreenConstraintsWithVFLForView:self.tableView];
-}
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    self.tableView.dataSource = self;
-//    self.allRooms = [[self.hotel rooms] allObjects];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
-    
 }
 
 -(NSFetchedResultsController *)allReservations{
@@ -66,33 +92,82 @@
     return _allReservations;
 }
 
-
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if(self.allReservations.sections.count == 0){
         return 0;
     } else {
-    id<NSFetchedResultsSectionInfo> sectionInfo = [self.allReservations.sections objectAtIndex:section];
-    return sectionInfo.numberOfObjects;
+        id<NSFetchedResultsSectionInfo> sectionInfo = [self.filteredReservations.sections objectAtIndex:section];
+        return sectionInfo.numberOfObjects;
     }
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return self.allReservations.sections.count;
+    return self.filteredReservations.sections.count;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    id<NSFetchedResultsSectionInfo> sectionInfo = [self.allReservations.sections objectAtIndex:section];
+    id<NSFetchedResultsSectionInfo> sectionInfo = [self.filteredReservations.sections objectAtIndex:section];
     return sectionInfo.name;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    Reservation *reservation = [self.allReservations objectAtIndexPath:indexPath];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    }
+    Reservation *reservation = [self.filteredReservations objectAtIndexPath:indexPath];
     cell.textLabel.numberOfLines = 2;
     cell.textLabel.text = [NSString stringWithFormat:@"Room Number: %i \nGuest Name: %@ %@",reservation.room.number, reservation.guest.firstName,reservation.guest.lastName];
+
     return cell;
-    
 }
+
+//-(void)filterContentForSearchText:(NSString*)searchText{
+//    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"%K CONTAINS %@", "guest.firstName", searchText];
+//    self.searchResult = [tableArray filteredArrayUsingPredicate:resultPredicate];
+//    [self.tableView reloadData];
+//}
+//
+//-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+//    if (self.searchBar.text.length == 0){
+//        searchEnabled = NO;
+//        [self.tableView reloadData];
+//    } else{
+//        searchEnabled = YES;
+//        
+//    }
+//}
+//-(void) searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+//    shouldShowSearchResults = true
+//    tblSearchResults.reloadData()
+//}
+//
+//
+//func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+//    shouldShowSearchResults = false
+//    tblSearchResults.reloadData()
+//}
+
+
+//- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope{
+
+    //    NSString *tempText = self.searchBar.text;
+    //
+    //    if (tempText != nil){
+    //        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name contains[cd] %@", tempText];
+    //        [NSFetchedResultsController.fetchRequest setPredicate:predicate];
+    //    } else {
+    //        NSPredicate *predicate =[NSPredicate predicateWithFormat:@"All"];
+    //        [NSFetchedResultsController.fetchRequest setPredicate:predicate];
+    //    }
+    
+//    [self.tableView reloadData];
+
+    //    [searchBar resignFirstResponder];
+    //    [_shadeView setAlpha:0.0f];
+    
+//}
+
 
 @end
