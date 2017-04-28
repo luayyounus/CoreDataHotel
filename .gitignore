@@ -158,6 +158,7 @@ playground.xcworkspace
 !*.xcodeproj/xcshareddata/
 !*.xcworkspace/contents.xcworkspacedata
 !*.xcuserdata/
+!*.UnusedCode.m
 /*.gcno
 
 # End of https://www.gitignore.io/api/xcode,macos,swift,objective-c

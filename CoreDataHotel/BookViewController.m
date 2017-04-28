@@ -18,7 +18,6 @@
 #import "Reservation+CoreDataProperties.h"
 #import "LookUpRerservationController.h"
 
-
 @interface BookViewController ()<UITextFieldDelegate>
 
 @property(strong,nonatomic) UITextField *firstNameField;
@@ -33,7 +32,6 @@
 -(void)loadView{
     [super loadView];
     [self.view setBackgroundColor:[UIColor whiteColor]];
-    
 
     self.firstNameField = [[UITextField alloc]init];
     self.lastNameField = [[UITextField alloc]init];
@@ -94,23 +92,17 @@
     [AutoLayout trailingConstraintFrom:self.firstNameField toView:self.view];
     [AutoLayout trailingConstraintFrom:self.lastNameField toView:self.view];
     [AutoLayout trailingConstraintFrom:self.emailField toView:self.view];
-
 }
 
 -(void)bookButtonPressed{
-    
-    
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = appDelegate.persistentContainer.viewContext;
-    
     Reservation *reservation = [NSEntityDescription insertNewObjectForEntityForName:@"Reservation" inManagedObjectContext:context];
-    
     reservation.startDate = self.startDate;
     reservation.endDate = self.endDate;
     reservation.room = self.room;
     
     reservation.guest = [NSEntityDescription insertNewObjectForEntityForName:@"Guest" inManagedObjectContext:context];
-    
     reservation.guest.firstName = self.firstNameField.text;
     reservation.guest.lastName = self.lastNameField.text;
     reservation.guest.emailAddress = self.emailField.text;
@@ -118,53 +110,18 @@
     NSError *saveError;
     
     [context save:&saveError];
-
     
     if (saveError){
-        
         NSDictionary *attributesDictionary = @{@"Save Error" : saveError.localizedDescription};
-        
+
         [Answers logCustomEventWithName:@"Save Reservation Error" customAttributes:attributesDictionary];
         NSLog(@"The Reservation is NOT made");
     } else {
-        
         NSLog(@"The Reservation is made successfully");
         
         [Answers logCustomEventWithName:@"Saved New Reservation" customAttributes:nil];
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
-    
-    
-    
 }
-
-//if([self.firstNameField.text isEqualToString:@""] || [self.firstNameField.text isEqualToString:@" "]) {
-//    [self.bookButton setEnabled:NO];
-//    [[self.bookButton layer] setBorderColor:[UIColor redColor].CGColor];
-//} else {
-//    [self.bookButton setEnabled:YES];
-//    [[self.bookButton layer] setBorderColor:[UIColor greenColor].CGColor];
-//}
-
-//    [self.firstNameField addTarget:self
-//                            action:@selector(textFieldDidChange:)
-//        forControlEvents:UIControlEventEditingChanged];
-//
-//    -(void)textFieldDidChange:(UITextField *)theTextField{
-//
-//    }
-
-
-//    float navBarHeight = CGRectGetHeight(self.navigationController.navigationBar.frame);
-//    CGFloat statusBarHeight = 20.0;
-//    CGFloat topMargin = 5;
-//    CGFloat windowHeight = self.view.frame.size.height;
-//    CGFloat textFieldHeight = ((windowHeight - topMargin) / 20);
-//
-//    NSDictionary *viewDictionary = @{@"firstName": self.firstNameField, @"lastName": self.lastNameField, @"emailAddress": self.emailField};
-//    NSDictionary *metricsDictionary = @{@"topMargin": [NSNumber numberWithFloat:topMargin], @"textFieldHeight": [NSNumber numberWithFloat:2]};
-//    NSString *visualFormatString = @"H:|-[firstName-|";
-//
-//    [AutoLayout constraintsWithVFLForViewDictionary:viewDictionary forMetricsDictionary:metricsDictionary withOptions:0 withVisualFormat:visualFormatString];
 
 @end

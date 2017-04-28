@@ -109,10 +109,6 @@
     return cell;
 }
 
--(void)updateSearchResultsForSearchController:(UISearchController *)searchController{
-    
-}
-
 -(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
     searchEnabled = YES;
     [self.searchBar setShowsCancelButton:YES];
