@@ -32,7 +32,6 @@
 }
 
 -(void)setupDoneButton{
-
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonPressed)];
     [self.navigationItem setRightBarButtonItem:doneButton];
 }
@@ -45,8 +44,6 @@
     availabilityVC.startDate = startDate;
     availabilityVC.endDate = endDate;
     [self.navigationController pushViewController:availabilityVC animated:YES];
-
-
 }
 
 - (void)viewDidLoad {
@@ -69,8 +66,6 @@
     [AutoLayout trailingConstraintFrom:self.startDate toView:self.view];
     self.startDate.minimumDate = [NSDate date];
     [self.startDate addTarget:self action:@selector(eventListenerForStartDate) forControlEvents:UIControlEventValueChanged];
-
-
     
     self.endDate = [[UIDatePicker alloc]init];
     self.endDate.datePickerMode = UIDatePickerModeDate;
