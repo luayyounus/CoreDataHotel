@@ -41,11 +41,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.dataSource = self;
+    
     self.filteredReservations = self.resultsFetched.fetchedObjects;
     self.allReservations = self.filteredReservations;
 }
 
 -(void)setupLayout{
+    
     self.searchBar = [[UISearchBar alloc]init];
     self.tableView = [[UITableView alloc] init];
     
@@ -54,21 +56,24 @@
     
     self.searchBar.delegate = self;
     
-    self.definesPresentationContext = YES;
     self.searchBar.placeholder = @"Enter a guest name";
     self.searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
     self.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
     self.searchBar.keyboardType = UIKeyboardTypeAlphabet;
     self.searchBar.translatesAutoresizingMaskIntoConstraints = NO;
+    self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
     
     [AutoLayout leadingConstraintFrom:self.searchBar toView:self.view];
     [AutoLayout trailingConstraintFrom:self.searchBar toView:self.view];
-
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
-    self.tableView.tableHeaderView = self.searchBar;
-    self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
-    
     [AutoLayout fullScreenConstraintsWithVFLForView:self.tableView];
+    
+    
+    self.tableView.tableHeaderView = self.searchBar;
+    [self.tableView.tableHeaderView layoutIfNeeded];
+    
+    
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+
 }
 
 -(NSFetchedResultsController *)resultsFetched{
@@ -116,7 +121,9 @@
 -(void)searchBarTextDidEndEditing:(UISearchBar *)searchBar{
     searchEnabled = NO;
     [searchBar setShowsCancelButton:NO];
+    [self.tableView reloadData];
 }
+
 -(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
     [self.searchBar setShowsCancelButton:NO];
     [self.searchBar resignFirstResponder];
@@ -127,7 +134,7 @@
     if ([self.searchBar.text isEqual: @""]){
         self.filteredReservations = self.allReservations;
     } else {
-        self.filteredReservations = [[self.filteredReservations filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"guest.lastName CONTAINS[c] %@ OR guest.firstName CONTAINS[c] %@", searchBar.text, searchBar.text]] mutableCopy];
+        self.filteredReservations = [[self.filteredReservations filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"guest.lastName CONTAINS[c] %@ OR guest.firstName CONTAINS[c] %@", self.searchBar.text, self.searchBar.text]] mutableCopy];
     }
     [self.tableView reloadData];
 }
