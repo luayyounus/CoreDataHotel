@@ -42,6 +42,7 @@
     id fullScreenConstraint = [AutoLayout fullScreenConstraintsWithVFLForView:self.superView];
     
     XCTAssertTrue(fullScreenConstraint, @"full Screen is not True");
+    XCTAssertNotNil(fullScreenConstraint);
 }
 
 -(void)testGenericConstraint{

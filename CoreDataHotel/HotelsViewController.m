@@ -48,7 +48,6 @@
 
 }
 
-//getter, if we dont have the data for all Hotels, go bring it!
 -(NSArray *)allHotels{
     if(!_allHotels){
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];

@@ -32,8 +32,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    // Override point for customization after application launch.
-    
     [self setupRootViewController];
     [self bootstrapApp];
     
@@ -42,7 +40,6 @@
     return YES;
 }
 
-//Load the data from the CoreData.. bootstrapping from json file
 -(void)bootstrapApp{
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Hotel"];
     
@@ -104,8 +101,6 @@
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
     self.viewController = [[ViewController alloc] init];
     self.navController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
-    
-    //entry point to our ViewController
     self.window.rootViewController = self.navController;
     [self.window makeKeyAndVisible];
     
