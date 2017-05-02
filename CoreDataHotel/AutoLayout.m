@@ -28,11 +28,9 @@
     [constraints addObjectsFromArray:horizontalConstraints];
     [constraints addObjectsFromArray:verticalConstraints];
     
-    //activate the constraints so they will work
     [NSLayoutConstraint activateConstraints:constraints];
     
     return constraints.copy;
-
 }
 
 +(NSArray *)constraintsWithVFLForViewDictionary:(NSDictionary *)viewDictionary
@@ -59,11 +57,8 @@
                                                                      toItem:superView
                                                                   attribute:attribute
                                                                  multiplier:multiplier constant:0.0];
-    
-    //activating the constraints
     constraint.active = YES;
     return constraint;
-    
 }
 
 +(NSLayoutConstraint *)genericConstraintFrom:(UIView *)view
@@ -79,7 +74,6 @@
     NSLayoutConstraint *heightConstraint = [AutoLayout genericConstraintFrom:view toView:otherView withAttribute:NSLayoutAttributeHeight andMultiplier:multiplier];
     
     return heightConstraint;
-    
 }
 
 +(NSLayoutConstraint *) equalWidthConstraintFromView:(UIView *)view
@@ -105,7 +99,6 @@
     NSLayoutConstraint *constraint = [AutoLayout genericConstraintFrom:view toView:otherView withAttribute:NSLayoutAttributeTop];
     constraint.active = YES;
     return constraint;
-    
 }
 
 +(NSLayoutConstraint *) leadingConstraintFrom:(UIView *)view
@@ -116,7 +109,6 @@
 +(NSLayoutConstraint *) trailingConstraintFrom:(UIView *)view
                                         toView:(UIView *)otherView{
     return [AutoLayout genericConstraintFrom:view toView:otherView withAttribute:NSLayoutAttributeTrailing];
-    
 }
 
 @end
